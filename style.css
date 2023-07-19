@@ -1,0 +1,117 @@
+* {
+    box-sizing: boder-box;
+    margin: 0;
+    padding: 0;
+    color: grey;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: azure;
+}
+.main-container {
+    background-color: black;
+    border-radius: 2%;
+    padding: 30px;
+}
+header {
+height: 200px;
+width: 700px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+
+.volume {
+display: flex;
+justify-content: space-around;
+width: 250px;
+font-size: 25px;
+}
+
+.show-key {
+display: flex;
+align-items: center;
+justify-content: space-around;
+font-size: 25px;
+width: 200px;
+}
+[type] ,.key {
+cursor: pointer;
+}
+[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 100px;
+    width: 80px;
+    height: 40px;
+    padding: 3px;
+  }
+  
+  [type="checkbox"]::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 50px;
+    position: absolute;
+    transition: transform 0.4s ease;
+  }
+  
+  [type="checkbox"].active::before {
+    transform: translateX(40px);
+  }
+  
+  [type="checkbox"].active {
+    background-color: rgb(227, 227, 147);
+  }
+  
+
+.piano-keys {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    height: 200px;
+}
+
+.key {
+ position: relative;
+}
+
+span {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+
+}
+
+.white > span {
+    position: relative;
+    width: 80px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+
+}
+
+.black > span {
+    position: absolute;
+    top:0px;
+    right: -30px;
+    width: 60px;
+    height: 140px;
+    background-color: black;
+    z-index: 1;
+}
+
+.piano-keys .key.active {
+    background-color: #f0f0f0; /* 원하는 배경색으로 변경 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+  }
+

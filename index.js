@@ -1,52 +1,24 @@
-const toggleButton = document.querySelector('[type="checkbox"]');
+const pianokeys = document.querySelectorAll(".key") 
+const allkeys = []; // 모든 키 배열
 
-toggleButton.addEventListener('click', function() {
-  this.classList.toggle('active');
-});
+const clickKey = () => {
+  pianokeys.forEach((key) => {
+    let keyData = key.dataset.key
+    allkeys.push(keyData)
+    key.addEventListener("click", () => play(keyData)); // 각 키를 클릭하면 해당하는 키의 데이터 키 값을 play 함수로 전달
+    });
+  };
 
-const spansa = document.querySelectorAll("li>span");
+  const keydownHandler = (e) => {
+    let keyData = e.key;
+    play(keyData);
+  };
 
-// 마우스 클릭이벤트
-spansa.forEach(span => {
-  span.addEventListener("click", audiopaly);
-});
-
-function audiopaly(event) {
-  const audio = this.querySelector("audio");
-  audio.play();
-}
-
-const spans = document.querySelectorAll(".piano-keys li span");
-const audio = new Audio(); // 빈 오디오 객체 생성
-
-spans.forEach(span => {
-  span.addEventListener("click", handleKeyClick);
-});
-
-function handleKeyClick(event) {
-  const span = event.currentTarget;
-  const key = span.getAttribute("data-key");
-  playTune(key);
-}
-
-function playTune(key) {
-  audio.src = `piano/${key}.wav`; // 오디오 src 변경
-  audio.currentTime = 0; // 재생 위치를 처음으로 되돌림
+function play(key) {
+  const audio = new Audio(`/piano/${key}.wav`); // 클릭된 키의 데이터 키 값을 사용하여 오디오 파일의 경로를 설정
   audio.play(); // 오디오 재생
-
-  const span = document.querySelector(`span[data-key="${key}"]`);
-  span.classList.add("active");
-  setTimeout(() => {
-    span.classList.remove("active");
-  }, 150);
 }
+window.addEventListener("keydown", keydownHandler);
 
-document.addEventListener("keydown", handleKeyDown);
-
-function handleKeyDown(event) {
-  const key = event.key.toLowerCase();
-  playTune(key);
-}
-
-
+clickKey()
 

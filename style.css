@@ -47,33 +47,31 @@ header {
   cursor: pointer;
 }
 
-.checkbox {
+.toggle {
   appearance: none;
+}
+
+.toggle-label {
   border: 1px solid gray;
   border-radius: 100px;
   width: 80px;
   height: 40px;
   padding: 3px;
+  outline: none;
+  position: relative;
 }
 
 .circle {
   width: 30px;
-  height: 30px;
-  background-color: white;
-  border-radius: 50px;
-}
-
-.toggle-active {
-  transform: translateX(120%);
+  height: 100%;
+  border-radius: 50%;
+  background-color: ghostwhite;
   transition: transform 200ms linear;
 }
 
-.checkbox-active {
-  background-color: gray;
-  transition: transform 200ms linear;
-  transform: translateX(0%);
+.toggle:checked+.toggle-label {
+  background-color: palegreen;
 }
-
 
 .piano-box {
   display: flex;
@@ -121,4 +119,8 @@ header {
   bottom: 20px;
   width: 100%;
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }

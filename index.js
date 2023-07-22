@@ -29,15 +29,18 @@ const keydownHandler = (e) => {
 
 window.addEventListener("keydown", keydownHandler);
 
-
 const circle = document.querySelector(".circle");
-circle.addEventListener("click", circleClick);
+const checkBox = document.querySelector(".toggle");
+const hiddenItems = document.querySelectorAll("li > span");
 
-function circleClick() {
-  circle.classList.toggle("toggle-active"); 
-  const checkbox = document.querySelector(".checkbox");
-  checkbox.classList.toggle("checkbox-active")
-}
-
-
-
+checkBox.addEventListener("click", (e) => {
+  const isChecked = e.target.checked;
+  circle.style.transform = isChecked ? "translateX(2.5rem)" : "translateX(0rem)";
+  hiddenItems.forEach(function(el) {
+    if (isChecked) {
+      el.classList.add("hidden");
+    } else {
+      el.classList.remove("hidden");
+    }
+  });
+});

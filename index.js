@@ -1,5 +1,7 @@
 const pianokeys = document.querySelectorAll(".key") 
 const allkeys = []; // 모든 키 배열
+const audio = new Audio(); 
+const volumeSlider = document.querySelector(".volume input");
 
 const clickKey = () => {
   pianokeys.forEach((key) => {
@@ -9,11 +11,9 @@ const clickKey = () => {
     });
   };
   clickKey();
-  
-
 
 function play(key) {
-  const audio = new Audio(`/piano/${key}.wav`); // 클릭된 키의 데이터 키 값을 사용하여 오디오 파일의 경로를 설정
+  audio.src = `/piano/${key}.wav`; // 클릭된 키의 데이터 키 값을 사용하여 오디오 파일의 경로를 설정
   audio.play(); // 오디오 재생
   const keydown = document.querySelector(`[data-key="${key}"]`);
   keydown.classList.add("active") 
@@ -43,4 +43,8 @@ checkBox.addEventListener("click", (e) => {
       el.classList.remove("hidden");
     }
   });
+});
+
+volumeSlider.addEventListener("input", (e) => {
+  audio.volume = e.target.value;
 });

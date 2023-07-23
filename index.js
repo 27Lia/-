@@ -39,9 +39,11 @@ checkBox.addEventListener("click", (e) => {
   circle.style.transform = isChecked ? "translateX(2.5rem)" : "translateX(0rem)";
   hiddenItems.forEach(function (el) {
     if (isChecked) {
-      el.classList.add("hidden");
-    } else {
       el.classList.remove("hidden");
+
+    } else {
+      el.classList.add("hidden");
+
     }
   });
 });
